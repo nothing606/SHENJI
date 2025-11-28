@@ -58,34 +58,28 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#999999",
+    "color": "#666666",
     "selectedColor": "#1890ff",
     "borderStyle": "black",
     "backgroundColor": "#FFFFFF",
+    "fontSize": "12px",
+    "height": "50px",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/home-active.png",
-        "text": "首页"
+        "text": "🏠 首页"
       },
       {
         "pagePath": "pages/project/list",
-        "iconPath": "static/tabbar/project.png",
-        "selectedIconPath": "static/tabbar/project-active.png",
-        "text": "项目"
+        "text": "📁 项目"
       },
       {
         "pagePath": "pages/workpaper/list",
-        "iconPath": "static/tabbar/workpaper.png",
-        "selectedIconPath": "static/tabbar/workpaper-active.png",
-        "text": "底稿"
+        "text": "📝 底稿"
       },
       {
         "pagePath": "pages/profile/index",
-        "iconPath": "static/tabbar/profile.png",
-        "selectedIconPath": "static/tabbar/profile-active.png",
-        "text": "我的"
+        "text": "👤 我的"
       }
     ]
   },

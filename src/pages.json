@@ -1,0 +1,102 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "审计数智析"
+      }
+    },
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/project/list",
+      "style": {
+        "navigationBarTitleText": "项目列表",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/project/detail",
+      "style": {
+        "navigationBarTitleText": "项目详情"
+      }
+    },
+    {
+      "path": "pages/workpaper/list",
+      "style": {
+        "navigationBarTitleText": "底稿列表"
+      }
+    },
+    {
+      "path": "pages/workpaper/detail",
+      "style": {
+        "navigationBarTitleText": "底稿详情"
+      }
+    },
+    {
+      "path": "pages/evidence/upload",
+      "style": {
+        "navigationBarTitleText": "上传证据"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "审计数智析",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/project/list",
+        "iconPath": "static/tabbar/project.png",
+        "selectedIconPath": "static/tabbar/project-active.png",
+        "text": "项目"
+      },
+      {
+        "pagePath": "pages/workpaper/list",
+        "iconPath": "static/tabbar/workpaper.png",
+        "selectedIconPath": "static/tabbar/workpaper-active.png",
+        "text": "底稿"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "iconPath": "static/tabbar/profile.png",
+        "selectedIconPath": "static/tabbar/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "condition": {
+    "current": 0,
+    "list": [
+      {
+        "name": "项目详情",
+        "path": "pages/project/detail",
+        "query": "id=test-project-1"
+      }
+    ]
+  }
+}

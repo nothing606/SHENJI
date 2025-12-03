@@ -52,7 +52,40 @@
 
 ---
 
-### 2. 部分依赖未安装 ⚠️
+### 2. 测试框架类型定义缺失 ✅ **已临时解决**
+
+**问题**: Jest测试框架的TypeScript类型定义未安装
+
+**影响级别**: 低（仅IDE警告，不影响运行）
+
+**现象**:
+```
+找不到名称"describe"
+找不到名称"it"
+找不到名称"expect"
+建议: npm i --save-dev @types/jest
+```
+
+**临时解决方案**: ✅ **已实施**
+
+创建了临时类型定义文件 `src/types/jest-globals.d.ts`：
+- ✅ 提供Jest全局函数类型
+- ✅ 消除IDE类型错误
+- ✅ 不影响测试运行
+- ✅ Week 2前替换为正式包
+
+**正式解决方案**（Week 2前）:
+```bash
+cd packages/backend
+npm install --save-dev @types/jest @types/node
+npm install --save-dev jest ts-jest
+```
+
+**状态**: ✅ **临时解决，Week 2前正式安装**
+
+---
+
+### 3. 部分依赖未安装 ⚠️
 
 **问题**: 审计节点所需依赖未完全安装
 

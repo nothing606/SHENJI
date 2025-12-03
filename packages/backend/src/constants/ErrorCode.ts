@@ -1,8 +1,41 @@
 /**
  * 统一错误码定义
- * Week 1: API优化 - 核心文件
+ * 
+ * @description 定义系统中所有可能出现的错误码和错误消息
+ * 按照错误类型分组，便于统一管理和错误处理
+ * 
+ * @author SHENJI Team
+ * @date 2025-12-03
+ * @version 1.0.0
+ * @since Week 1: API优化 - 核心文件
+ * 
+ * @remarks
+ * 错误码分组规则：
+ * - 1xxx: 客户端错误（参数、格式等）
+ * - 2xxx: 认证/授权错误
+ * - 3xxx: 资源错误（不存在、冲突等）
+ * - 4xxx: 业务错误（工作流、审计业务等）
+ * - 5xxx: 服务器错误
+ * - 6xxx: 限流错误
+ * 
+ * @example
+ * ```typescript
+ * // 抛出业务异常
+ * throw new BusinessError(ErrorCode.NOT_FOUND, '用户不存在');
+ * 
+ * // 获取错误消息
+ * const message = getErrorMessage(ErrorCode.INVALID_PARAMS);
+ * ```
  */
 
+/**
+ * 错误码枚举
+ * 
+ * @description 定义系统中所有错误的数字编码
+ * 每个错误码对应一个唯一的错误场景
+ * 
+ * @enum {number}
+ */
 export enum ErrorCode {
   // 1xxx - 客户端错误
   INVALID_PARAMS = 1001,
@@ -53,6 +86,20 @@ export enum ErrorCode {
   CONCURRENT_LIMIT_EXCEEDED = 6003,
 }
 
+/**
+ * 错误消息映射表
+ * 
+ * @description 错误码到错误消息的映射关系
+ * 提供用户友好的错误提示文案
+ * 
+ * @type {Record<ErrorCode, string>}
+ * 
+ * @example
+ * ```typescript
+ * const message = ErrorMessage[ErrorCode.NOT_FOUND];
+ * console.log(message); // '资源不存在'
+ * ```
+ */
 export const ErrorMessage: Record<ErrorCode, string> = {
   // 客户端错误
   [ErrorCode.INVALID_PARAMS]: '参数错误',
@@ -105,8 +152,48 @@ export const ErrorMessage: Record<ErrorCode, string> = {
 
 /**
  * 业务异常类
+ * 
+ * @description 自定义的业务异常类，用于表示业务逻辑层面的错误
+ * 包含错误码、错误消息和详细信息
+ * 
+ * @extends {Error}
+ * 
+ * @example
+ * ```typescript
+ * // 抛出基本异常
+ * throw new BusinessError(ErrorCode.NOT_FOUND);
+ * 
+ * // 抛出带自定义消息的异常
+ * throw new BusinessError(ErrorCode.INVALID_PARAMS, '用户ID必须为数字');
+ * 
+ * // 抛出带详细信息的异常
+ * throw new BusinessError(
+ *   ErrorCode.ACCOUNT_MISMATCH,
+ *   '账目不匹配',
+ *   { expected: 1000, actual: 900, difference: 100 }
+ * );
+ * 
+ * // 捕获并处理
+ * try {
+ *   await someBusinessOperation();
+ * } catch (error) {
+ *   if (error instanceof BusinessError) {
+ *     console.log(`错误码: ${error.code}, 消息: ${error.message}`);
+ *     if (error.details) {
+ *       console.log('详细信息:', error.details);
+ *     }
+ *   }
+ * }
+ * ```
  */
 export class BusinessError extends Error {
+  /**
+   * 创建业务异常实例
+   * 
+   * @param {ErrorCode} code - 错误码
+   * @param {string} [message] - 自定义错误消息，不提供则使用默认消息
+   * @param {any} [details] - 错误详细信息，用于调试和日志
+   */
   constructor(
     public code: ErrorCode,
     message?: string,
@@ -120,6 +207,21 @@ export class BusinessError extends Error {
 
 /**
  * 获取错误消息
+ * 
+ * @description 根据错误码获取对应的错误消息
+ * 如果错误码不存在，返回'未知错误'
+ * 
+ * @param {ErrorCode} code - 错误码
+ * @returns {string} 错误消息字符串
+ * 
+ * @example
+ * ```typescript
+ * const message = getErrorMessage(ErrorCode.NOT_FOUND);
+ * console.log(message); // '资源不存在'
+ * 
+ * const unknownMessage = getErrorMessage(9999 as ErrorCode);
+ * console.log(unknownMessage); // '未知错误'
+ * ```
  */
 export function getErrorMessage(code: ErrorCode): string {
   return ErrorMessage[code] || '未知错误';

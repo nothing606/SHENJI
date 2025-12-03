@@ -170,7 +170,7 @@ class ErnieProvider extends BaseAIProvider {
       this.accessToken = response.data.access_token;
       this.tokenExpiry = Date.now() + (response.data.expires_in - 60) * 1000;
       
-      return this.accessToken;
+      return this.accessToken!;
     } catch (error: any) {
       throw new Error(`获取百度AI访问令牌失败: ${error.message}`);
     }

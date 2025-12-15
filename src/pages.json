@@ -55,6 +55,19 @@
       "style": {
         "navigationBarTitleText": "GraphStore测试"
       }
+    },
+    
+    {
+      "path": "pages/bridge-demo/index",
+      "style": {
+        "navigationBarTitleText": "互通演示"
+      }
+    },
+    {
+      "path": "pages/webview/index",
+      "style": {
+       "navigationBarTitleText": "加载中..."
+      }
     }
   ],
   "globalStyle": {

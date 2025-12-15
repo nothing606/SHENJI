@@ -17,7 +17,7 @@
       "@/*": ["src/*"],
       "@audit/shared": ["packages/shared/src"]
     },
-    "types": ["@dcloudio/types", "@types/node", "vite/client"],
+    "types": ["@dcloudio/types", "@types/node", "vite/client", "@types/wechat-miniprogram"],
     "noEmit": true,
     "isolatedModules": true
   },

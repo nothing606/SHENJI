@@ -84,7 +84,10 @@ export interface UploadResult {
  */
 export class PlatformAdapter {
   
-  private static readonly API_BASE = (import.meta.env?.VITE_API_BASE as string) || 'https://api.audit.com';
+  public static readonly API_BASE = (import.meta.env?.VITE_API_BASE as string) || 'https://api.audit.com';
+  public static getApiBase(): string {
+    return this.API_BASE;
+  }
   
   /**
    * 统一的登录
